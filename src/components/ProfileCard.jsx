@@ -33,7 +33,7 @@ const ProfileCard = ({ onFlip }) => {
         
         {/* Mobile Avatar */}
         <div className="lg:hidden w-28 h-28 mx-auto mb-6 rounded-sm bg-cover bg-center border border-zinc-200 dark:border-zinc-700 shadow-inner"
-             style={{ backgroundImage: "url('/mia.png')" }}></div>
+             style={{ backgroundImage: "url('./mia.png')" }}></div>
 
         <h1 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-white text-center lg:text-left tracking-tight mb-2">
           Andrea Valero
@@ -88,7 +88,7 @@ const ProfileCard = ({ onFlip }) => {
       <div className="hidden lg:block w-2/5 relative h-full bg-zinc-100 dark:bg-zinc-800 border-l border-zinc-200 dark:border-zinc-700">
        
         <div className="absolute inset-0 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700 ease-in-out" 
-             style={{ backgroundImage: "url('/mia.png')" }}>
+             style={{ backgroundImage: "url('./mia.png')" }}>
           <div className="absolute inset-0 bg-orange-900/20 mix-blend-overlay"></div>
         </div>
       </div>
