@@ -76,9 +76,7 @@ const ProfileCard = ({ onFlip }) => {
         {/* Social Icons - Removed 'mt-auto' so it stays grouped in the center */}
         <div className="flex justify-center lg:justify-around gap-8 w-full">
            <SocialIcon Icon={Github} handle="GitHub" href="https://github.com/andreavalerosanz-rgb"/>
-           <SocialIcon Icon={Linkedin} handle="LinkedIn" />
-           <SocialIcon Icon={Twitter} handle="Twitter" />
-           <SocialIcon Icon={Instagram} handle="Instagram" />
+           <SocialIcon Icon={Linkedin} handle="LinkedIn" href='https://www.linkedin.com/in/andrea-valero-sanz-596010312/' />
         </div>
       </div>
 

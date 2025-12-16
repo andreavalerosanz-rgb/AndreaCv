@@ -51,7 +51,8 @@ const SidebarContent = ({ cv }) => {
             {cv.headers.skills}
           </h3>
           <div className="flex flex-wrap gap-2">
-            {["React", "Node", "AWS", "Agile", "TypeScript"].map((s, i) => (
+            {["React", "Node.js", "JavaScript", "AWS", "Agile", 
+              "Tailwind", "Git", "SQL", "Astro", "Shadcn"].map((s, i) => (
               <span key={i} className="text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2 py-1 rounded-sm hover:border-orange-300 transition-colors cursor-default">
                 {s}
               </span>
