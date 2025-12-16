@@ -6,6 +6,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../LanguageContext';
 import SidebarContent from './SidebarContent';
 
+const TabButton = ({ tab, activeTab, onClick, icon, label }) => (
+  <button
+    onClick={() => onClick(tab)}
+    className={`relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap
+      ${activeTab === tab
+        ? 'text-orange-600 dark:text-orange-500'
+        : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+    }`}
+  >
+    {icon}
+    <span>{label}</span>
+    {activeTab === tab && (
+      <motion.div 
+        layoutId="activeTab"
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600 dark:bg-orange-500"
+        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+      />
+    )}
+  </button>
+);
+
 const CVSection = ({ onFlip }) => {
   const [activeTab, setActiveTab] = useState('experience');
   const { content, language, toggleLanguage } = useLanguage();
@@ -26,32 +47,11 @@ const CVSection = ({ onFlip }) => {
     visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } }
   };
 
-  const TabButton = ({ tab, icon, label }) => (
-    <button
-      onClick={() => setActiveTab(tab)}
-      className={`relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap
-        ${activeTab === tab
-          ? 'text-orange-600 dark:text-orange-500'
-          : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
-      }`}
-    >
-      {icon}
-      <span>{label}</span>
-      {activeTab === tab && (
-        <motion.div 
-          layoutId="activeTab"
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600 dark:bg-orange-500"
-        />
-      )}
-    </button>
-  );
-
   return (
     <div className="flex flex-col h-full w-full bg-white dark:bg-zinc-950 rounded-sm shadow-sm overflow-hidden border border-zinc-200 dark:border-zinc-800">
       
       {/* Header */}
       <div className="bg-zinc-900 text-white p-4 shrink-0 flex justify-between items-center z-20 border-b border-zinc-800">
-        {/* Left Side: Back Btn & Name */}
         <div className="flex items-center gap-3">
             <button onClick={onFlip} className="lg:hidden p-2 hover:bg-white/10 rounded-sm transition-colors">
                 <ChevronLeft className="w-5 h-5" />
@@ -62,10 +62,8 @@ const CVSection = ({ onFlip }) => {
             </div>
         </div>
 
-        {/* Right Side: Language Switcher & Flip Button */}
         <div className="flex items-center gap-4">
-          
-          {/* Language Switcher (Integrated into Header) */}
+          {/* Language Switcher */}
           <div className="flex bg-zinc-800 rounded-sm overflow-hidden border border-zinc-700">
             {['en', 'es', 'ca'].map((lang) => (
               <button
@@ -104,11 +102,35 @@ const CVSection = ({ onFlip }) => {
           {/* Tab Navigation */}
           <div className="flex border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shrink-0 overflow-x-auto hide-scrollbar px-2 md:px-6">
             <div className="md:hidden">
-                <TabButton tab="contact" icon={<User className="w-4 h-4"/>} label={cv.tabs.contact} />
+                <TabButton 
+                  tab="contact" 
+                  activeTab={activeTab} 
+                  onClick={setActiveTab} 
+                  icon={<User className="w-4 h-4"/>} 
+                  label={cv.tabs.contact} 
+                />
             </div>
-            <TabButton tab="experience" icon={<Briefcase className="w-4 h-4"/>} label={cv.tabs.experience} />
-            <TabButton tab="education" icon={<GraduationCap className="w-4 h-4"/>} label={cv.tabs.education} />
-            <TabButton tab="skills" icon={<Code className="w-4 h-4"/>} label={cv.tabs.skills} />
+            <TabButton 
+              tab="experience" 
+              activeTab={activeTab} 
+              onClick={setActiveTab} 
+              icon={<Briefcase className="w-4 h-4"/>} 
+              label={cv.tabs.experience} 
+            />
+            <TabButton 
+              tab="education" 
+              activeTab={activeTab} 
+              onClick={setActiveTab} 
+              icon={<GraduationCap className="w-4 h-4"/>} 
+              label={cv.tabs.education} 
+            />
+            <TabButton 
+              tab="skills" 
+              activeTab={activeTab} 
+              onClick={setActiveTab} 
+              icon={<Code className="w-4 h-4"/>} 
+              label={cv.tabs.skills} 
+            />
           </div>
 
           {/* Tab Content with Animation */}
