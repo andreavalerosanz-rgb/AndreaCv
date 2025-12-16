@@ -21,7 +21,7 @@ const SidebarContent = ({ cv }) => {
           </div>
           <div className="flex items-start text-zinc-600 dark:text-zinc-400 group">
             <Globe className="w-4 h-4 mr-3 mt-0.5 text-zinc-400 group-hover:text-orange-500 transition-colors" />
-            andreawaqt
+            https://andreavalerosanz-rgb.github.io/AndreaCv/
           </div>
         </div>
       </div>
